@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About | Student Portfolio</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+background:#f4f6f9;
+}
+
+/* Header */
+
+header{
+background:#003366;
+color:white;
+padding:20px;
+text-align:center;
+}
+
+header h1{
+font-size:35px;
+margin-bottom:15px;
+}
+
+nav ul{
+list-style:none;
+display:flex;
+justify-content:center;
+gap:25px;
+flex-wrap:wrap;
+}
+
+nav ul li a{
+color:white;
+text-decoration:none;
+font-weight:bold;
+transition:.3s;
+}
+
+nav ul li a:hover{
+color:gold;
+}
+
+/* About */
+
+.about{
+width:90%;
+max-width:1100px;
+margin:40px auto;
+display:grid;
+grid-template-columns:300px 1fr;
+gap:30px;
+}
+
+.profile{
+background:white;
+padding:30px;
+border-radius:10px;
+box-shadow:0 5px 15px rgba(0,0,0,.1);
+text-align:center;
+}
+
+.profile img{
+width:180px;
+height:180px;
+border-radius:50%;
+object-fit:cover;
+border:5px solid #003366;
+margin-bottom:20px;
+}
+
+.profile h2{
+color:#003366;
+margin-bottom:10px;
+}
+
+.profile p{
+line-height:1.8;
+}
+
+.content{
+background:white;
+padding:35px;
+border-radius:10px;
+box-shadow:0 5px 15px rgba(0,0,0,.1);
+}
+
+.content h2{
+color:#003366;
+margin-bottom:20px;
+border-bottom:3px solid #003366;
+padding-bottom:10px;
+}
+
+.content p{
+line-height:1.9;
+margin-bottom:20px;
+text-align:justify;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+margin:25px 0;
+}
+
+table td{
+padding:15px;
+border:1px solid #ddd;
+}
+
+table td:first-child{
+font-weight:bold;
+background:#003366;
+color:white;
+width:35%;
+}
+
+.skills{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+gap:15px;
+margin-top:20px;
+}
+
+.skill{
+background:#003366;
+color:white;
+padding:15px;
+border-radius:8px;
+text-align:center;
+font-weight:bold;
+}
+
+.goal{
+background:#eef5ff;
+padding:20px;
+border-left:5px solid #003366;
+margin-top:30px;
+border-radius:8px;
+}
+
+footer{
+margin-top:40px;
+background:#003366;
+color:white;
+text-align:center;
+padding:20px;
+}
+
+@media(max-width:768px){
+
+.about{
+grid-template-columns:1fr;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<h1>About Me</h1>
+
+<nav>
+
+<ul>
+
+<li><a href="Home.html">Home</a></li>
+
+<li><a href="About.html">About</a></li>
+
+<li><a href="Portfolio.html">Portfolio</a></li>
+
+<li><a href="Service.html">Service</a></li>
+
+<li><a href="Contact.html">Contact</a></li>
+
+</ul>
+
+</nav>
+
+</header>
+
+<section class="about">
+
+<div class="profile">
+
+<img src="Profile.jpeg" alt="Profile Picture">
+
+<h2>Glory Nkereuwem Ebong</h2>
+
+<p>
+
+Computer Science Student
+
+<br>
+
+Akwa Ibom State University
+
+</p>
+
+</div>
+
+<div class="content">
+
+<h2>Biography</h2>
+
+<p>
+
+My name is <strong>Glory Nkereuwem Ebong</strong>. I am a Computer Science student in the Faculty of Computing and Information Technology, Akwa Ibom State University.
+
+This portfolio website was developed as part of the requirements for <strong>CSC 412 - Net-Centric Computing</strong>. It showcases my academic journey, technical skills, projects, services and online retail shop.
+
+</p>
+
+<h2>Academic Information</h2>
+
+<table>
+
+<tr>
+
+<td>Full Name</td>
+
+<td>Glory Nkereuwem Ebong</td>
+
+</tr>
+
+<tr>
+
+<td>Registration Number</td>
+
+<td>AK22/PHS/CSC/022</td>
+
+</tr>
+
+<tr>
+
+<td>Department</td>
+
+<td>Computer Science</td>
+
+</tr>
+
+<tr>
+
+<td>Faculty</td>
+
+<td>Computing and Information Technology</td>
+
+</tr>
+
+<tr>
+
+<td>University</td>
+
+<td>Akwa Ibom State University</td>
+
+</tr>
+
+<tr>
+
+<td>Course Code</td>
+
+<td>CSC 412</td>
+
+</tr>
+
+<tr>
+
+<td>Course Title</td>
+
+<td>NET-CENTRIC COMPUTING</td>
+
+</tr>
+
+</table>
+
+<h2>Technical Skills</h2>
+
+<div class="skills">
+
+<div class="skill">HTML5</div>
+
+<div class="skill">CSS3</div>
+
+<div class="skill">JavaScript</div>
+
+<div class="skill">Python</div>
+
+<div class="skill">Responsive Web Design</div>
+
+<div class="skill">Problem Solving</div>
+
+</div>
+
+<div class="goal">
+
+<h2>Career Objective</h2>
+
+<p>
+
+My career goal is to become a professional Software Engineer with specialization in Web Development, Artificial Intelligence and Software Engineering, creating innovative solutions that solve real-world problems.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<footer>
+
+<p>
+
+© 2026 Glory Nkereuwem Ebong | AK22/PHS/CSC/022
+
+</p>
+
+</footer>
+
+</body>
+</html>

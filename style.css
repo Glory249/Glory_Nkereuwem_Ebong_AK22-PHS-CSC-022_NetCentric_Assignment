@@ -1,0 +1,420 @@
+/* Global Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background: #f4f6f9;
+    color: #333;
+}
+
+/* Navigation Header */
+header {
+    background: #003366;
+    padding: 20px 8%;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.logo {
+    color: white;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 17px;
+    transition: 0.3s;
+}
+
+nav ul li a:hover {
+    color: #FFD700;
+}
+
+/* Hero Section (Home) */
+.hero-home {
+    text-align: center;
+    padding: 70px 20px;
+    background: white;
+}
+
+.hero-home h1 {
+    font-size: 45px;
+    color: #003366;
+}
+
+.hero-home h2 {
+    margin: 15px 0;
+    color: #0066cc;
+}
+
+.hero-home p {
+    width: 80%;
+    max-width: 800px;
+    margin: 20px auto;
+    line-height: 1.8;
+    font-size: 18px;
+}
+
+.hero-home a {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 15px 35px;
+    background: #003366;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: 0.3s;
+}
+
+.hero-home a:hover {
+    background: #0055aa;
+}
+
+/* Hero Section (About Layout) */
+.hero-about {
+    width: 90%;
+    max-width: 1100px;
+    margin: 50px auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 50px;
+}
+
+.left {
+    flex: 1;
+}
+
+.left h3 {
+    color: #003366;
+    margin-bottom: 15px;
+}
+
+.left h1 {
+    font-size: 45px;
+    color: #222;
+    margin-bottom: 15px;
+}
+
+.left h2 {
+    color: #0066cc;
+    margin-bottom: 25px;
+}
+
+.left p {
+    line-height: 1.8;
+    color: #444;
+    text-align: justify;
+}
+
+.button {
+    display: inline-block;
+    margin-top: 30px;
+    background: #003366;
+    color: white;
+    text-decoration: none;
+    padding: 14px 30px;
+    border-radius: 6px;
+    transition: 0.3s;
+}
+
+.button:hover {
+    background: #0055aa;
+}
+
+.right {
+    flex: 1;
+    text-align: center;
+}
+
+.right img {
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 8px solid white;
+    box-shadow: 0 0 20px rgba(0,0,0,.2);
+}
+
+/* Grid Navigation Cards (Home) */
+.cards {
+    width: 90%;
+    max-width: 1100px;
+    margin: 60px auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+}
+
+.card {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.card h3 {
+    color: #003366;
+    margin-bottom: 15px;
+}
+
+.card p {
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.card a {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #003366;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.card a:hover {
+    background: #0055aa;
+}
+
+/* Information Tables */
+.info {
+    width: 90%;
+    max-width: 900px;
+    margin: 60px auto;
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.info h2 {
+    color: #003366;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table th, table td {
+    border: 1px solid #ddd;
+    padding: 15px;
+    text-align: left;
+}
+
+table th {
+    background: #003366;
+    color: white;
+}
+
+/* Skills Section */
+.skills {
+    width: 90%;
+    max-width: 1100px;
+    margin: 60px auto;
+}
+
+.skills h2 {
+    text-align: center;
+    color: #003366;
+    margin-bottom: 30px;
+}
+
+.skills ul {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    list-style: none;
+}
+
+.skills li {
+    background: white;
+    padding: 15px;
+    border-left: 5px solid #003366;
+    border-radius: 5px;
+    box-shadow: 0 0 8px rgba(0,0,0,.1);
+}
+
+/* Footer */
+footer {
+    background: #003366;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 60px;
+}
+
+
+
+/* Reviews */
+
+.reviews{
+width:85%;
+max-width:900px;
+margin:50px auto;
+background:white;
+padding:30px;
+border-radius:10px;
+box-shadow:0 0 10px rgba(0,0,0,.1);
+}
+
+.reviews h2{
+color:#003366;
+text-align:center;
+margin-bottom:15px;
+}
+
+.reviews p{
+text-align:center;
+margin-bottom:25px;
+line-height:1.7;
+}
+
+.reviews input,
+.reviews textarea,
+.reviews select{
+width:100%;
+padding:15px;
+margin-bottom:20px;
+border:1px solid #ccc;
+border-radius:6px;
+font-size:16px;
+}
+
+.reviews textarea{
+resize:none;
+}
+
+.reviews button{
+background:#003366;
+color:white;
+border:none;
+padding:15px 30px;
+border-radius:6px;
+cursor:pointer;
+font-size:16px;
+}
+
+.reviews button:hover{
+background:#0055aa;
+}
+
+.review-card{
+background:#f7f7f7;
+padding:20px;
+margin-top:20px;
+border-left:5px solid #003366;
+border-radius:6px;
+}
+
+.review-card h3{
+color:#003366;
+margin-bottom:10px;
+}
+
+.review-card span{
+font-size:14px;
+color:gray;
+display:block;
+margin-bottom:10px;
+}
+
+
+
+
+.review-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:15px;
+}
+
+.review-header h3{
+    color:#003366;
+}
+
+.menu{
+    position:relative;
+}
+
+.menu-btn{
+    background:none;
+    border:none;
+    color:#003366;
+    font-size:26px;
+    cursor:pointer;
+    padding:4px 8px;
+    transition:.3s;
+}
+
+.menu-btn:hover{
+    color:#0055aa;
+}
+
+.menu-content{
+    display:none;
+    position:absolute;
+    top:35px;
+    right:0;
+    width:140px;
+    background:#fff;
+    border-radius:8px;
+    box-shadow:0 5px 15px rgba(0,0,0,.2);
+    overflow:hidden;
+    z-index:999;
+}
+
+.menu-content button{
+    width:100%;
+    background:#fff;
+    border:none;
+    padding:12px 15px;
+    text-align:left;
+    cursor:pointer;
+    font-size:15px;
+    transition:.3s;
+}
+
+.menu-content button:hover{
+    background:#f5f5f5;
+}
+
+.menu-content button:last-child{
+    color:red;
+}
+
+.reply-box{
+    margin-top:15px;
+    margin-left:20px;
+    padding:12px;
+    background:#eef5ff;
+    border-left:4px solid #003366;
+    border-radius:6px;
+    font-size:14px;
+}

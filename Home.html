@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Home | Student Portfolio</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#f4f4f4;
+}
+
+/* Header */
+
+header{
+    background:#003366;
+    color:white;
+    padding:20px;
+    text-align:center;
+}
+
+header h1{
+    font-size:36px;
+    margin-bottom:10px;
+}
+
+header p{
+    font-size:18px;
+    margin:5px 0;
+}
+
+/* Welcome Section */
+
+.home{
+    width:80%;
+    margin:40px auto;
+    text-align:center;
+    background:white;
+    padding:40px;
+    border-radius:10px;
+    box-shadow:0 0 10px rgba(0,0,0,.1);
+}
+
+.home h2{
+    color:#003366;
+    margin-bottom:20px;
+}
+
+.home p{
+    line-height:1.8;
+    margin-bottom:30px;
+    font-size:17px;
+}
+
+.button{
+    display:inline-block;
+    background:#003366;
+    color:white;
+    text-decoration:none;
+    padding:12px 30px;
+    border-radius:5px;
+}
+
+.button:hover{
+    background:#0055aa;
+}
+
+/* Cards */
+
+.links{
+    width:85%;
+    margin:40px auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:25px;
+}
+
+.box{
+    background:white;
+    padding:25px;
+    text-align:center;
+    border-radius:10px;
+    box-shadow:0 0 10px rgba(0,0,0,.1);
+}
+
+.box h3{
+    color:#003366;
+    margin-bottom:15px;
+}
+
+.box p{
+    line-height:1.6;
+    margin-bottom:20px;
+}
+
+.box a{
+    display:inline-block;
+    text-decoration:none;
+    background:#003366;
+    color:white;
+    padding:10px 20px;
+    border-radius:5px;
+}
+
+.box a:hover{
+    background:#0055aa;
+}
+
+/* Reviews */
+
+.reviews{
+    width:85%;
+    max-width:900px;
+    margin:50px auto;
+    background:white;
+    padding:30px;
+    border-radius:10px;
+    box-shadow:0 0 10px rgba(0,0,0,.1);
+}
+
+.reviews h2{
+    text-align:center;
+    color:#003366;
+    margin-bottom:20px;
+}
+
+.reviews p{
+    text-align:center;
+    margin-bottom:25px;
+}
+
+.reviews input,
+.reviews textarea,
+.reviews select{
+    width:100%;
+    padding:15px;
+    margin-bottom:20px;
+    border:1px solid #ccc;
+    border-radius:6px;
+}
+
+.reviews textarea{
+    resize:none;
+}
+
+.reviews button{
+    background:#003366;
+    color:white;
+    border:none;
+    padding:15px 30px;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+.reviews button:hover{
+    background:#0055aa;
+}
+
+.review-card{
+    background:#f7f7f7;
+    padding:20px;
+    margin-top:20px;
+    border-left:5px solid #003366;
+    border-radius:8px;
+}
+
+.review-card h3{
+    color:#003366;
+}
+
+.review-card span{
+    color:gray;
+    font-size:14px;
+}
+
+/* Footer */
+
+footer{
+    margin-top:50px;
+    background:#003366;
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<h1>Student Portfolio</h1>
+
+<p><strong>Name:</strong> Glory Nkereuwem Ebong</p>
+
+<p><strong>Registration Number:</strong> AK22/PHS/CSC/022</p>
+
+<p><strong>Course Code:</strong> CSC 412</p>
+
+<p><strong>Course Title:</strong> NET-CENTRIC COMPUTING</p>
+
+</header>
+
+<section class="home">
+
+<h2>Welcome</h2>
+
+<p>
+
+Welcome to my official student portfolio website developed as part of the
+CSC 412 (Net-Centric Computing) course.
+
+This website showcases my academic projects, retail shop portfolio,
+professional services, contact information, and other activities completed
+during my study at Akwa Ibom State University.
+
+Use the sections below to explore my portfolio.
+
+</p>
+
+
+
+</section>
+
+<section class="links">
+
+<div class="box">
+<h3>About Me</h3>
+<p>Learn more about my educational background and profile.</p>
+<a href="About.html">Open</a>
+</div>
+
+<div class="box">
+<h3>Portfolio</h3>
+<p>View my academic work and retail shop.</p>
+<a href="Portfolio.html">Open</a>
+</div>
+
+<div class="box">
+<h3>Service</h3>
+<p>Explore the services that I provide.</p>
+<a href="Service.html">Open</a>
+</div>
+
+<div class="box">
+<h3>Contact</h3>
+<p>Contact me for enquiries and collaborations.</p>
+<a href="Contact.html">Open</a>
+</div>
+
+</section>
+
+<section class="reviews">
+
+<h2>Lecturer's Review & Feedback</h2>
+
+<p>Visitors and lecturers can leave reviews below.</p>
+
+<form id="reviewForm">
+
+<input type="text" id="name" placeholder="Your Name" required>
+
+<input type="text" id="department" placeholder="Department">
+
+<select id="rating" required>
+
+<option value="">Select Rating</option>
+
+<option>⭐⭐⭐⭐⭐ Excellent</option>
+
+<option>⭐⭐⭐⭐ Very Good</option>
+
+<option>⭐⭐⭐ Good</option>
+
+<option>⭐⭐ Fair</option>
+
+<option>⭐ Poor</option>
+
+</select>
+
+<textarea id="review" rows="5" placeholder="Write your review..." required></textarea>
+
+<button type="submit">Submit Review</button>
+
+</form>
+
+<h2 style="margin-top:40px;">Reviews</h2>
+
+<div id="reviewsContainer"></div>
+
+</section>
+
+<footer>
+
+<p>&copy; 2026 Glory Nkereuwem Ebong | AK22/PHS/CSC/022</p>
+
+</footer>
+
+<script src="js/review.js"></script>
+
+</body>
+</html>

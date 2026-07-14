@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Checkout | Glory Retail Shop</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#f4f4f4;
+}
+
+header{
+    background:#003366;
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+
+header h1{
+    margin-bottom:10px;
+}
+
+.container{
+    width:90%;
+    max-width:900px;
+    margin:40px auto;
+    background:white;
+    padding:30px;
+    border-radius:10px;
+    box-shadow:0 0 10px rgba(0,0,0,.1);
+}
+
+.container h2{
+    text-align:center;
+    color:#003366;
+    margin-bottom:25px;
+}
+
+.section{
+    margin-bottom:35px;
+}
+
+.section h3{
+    color:#003366;
+    margin-bottom:15px;
+    border-bottom:2px solid #003366;
+    padding-bottom:5px;
+}
+
+label{
+    display:block;
+    margin-top:15px;
+    margin-bottom:5px;
+    font-weight:bold;
+}
+
+input,
+textarea,
+select{
+    width:100%;
+    padding:12px;
+    border:1px solid #ccc;
+    border-radius:5px;
+}
+
+textarea{
+    resize:none;
+}
+
+.payment{
+    background:#eef5ff;
+    padding:20px;
+    border-left:5px solid #003366;
+    border-radius:5px;
+    line-height:2;
+}
+
+.payment h4{
+    color:#003366;
+    margin-bottom:10px;
+}
+
+button{
+    background:#003366;
+    color:white;
+    border:none;
+    padding:15px 30px;
+    border-radius:5px;
+    cursor:pointer;
+    font-size:16px;
+}
+
+button:hover{
+    background:#0055aa;
+}
+
+.whatsapp{
+    display:inline-block;
+    margin-top:20px;
+    background:#25D366;
+    color:white;
+    text-decoration:none;
+    padding:15px 25px;
+    border-radius:5px;
+    font-weight:bold;
+}
+
+.whatsapp:hover{
+    background:#1ea952;
+}
+
+footer{
+    margin-top:40px;
+    background:#003366;
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<h1>Glory Retail Shop</h1>
+
+<p>Secure Checkout Page</p>
+
+</header>
+
+<div class="container">
+
+<h2>Complete Your Order</h2>
+
+<form action="https://formspree.io/f/mojgveyd" method="POST">
+
+<input type="hidden" name="_subject" value="New Retail Shop Order">
+
+<div class="section">
+
+<h3>Customer Information</h3>
+
+<label>Full Name</label>
+<input type="text" name="Full Name" placeholder="Enter your full name" required>
+
+<label>Email Address</label>
+<input type="email" name="Email Address" placeholder="Enter your email" required>
+
+<label>Phone Number</label>
+<input type="tel" name="Phone Number" placeholder="Enter your phone number" required>
+
+<label>Delivery Address</label>
+<textarea rows="4" name="Delivery Address" placeholder="Enter your full delivery address" required></textarea>
+
+<label>State</label>
+<input type="text" name="State" placeholder="Enter your state" required>
+
+<label>City</label>
+<input type="text" name="City" placeholder="Enter your city" required>
+
+</div>
+
+<div class="section">
+
+<h3>Order Details</h3>
+
+<label>Product Name</label>
+<input type="text" name="Product Name" placeholder="Example: Samsung Galaxy Phone" required>
+
+<label>Quantity</label>
+<input type="number" name="Quantity" value="1" min="1" required>
+
+<label>Total Amount</label>
+<input type="text" name="Total Amount" placeholder="₦250,000" required>
+
+</div>
+
+<div class="section">
+
+<h3>Payment Information</h3>
+
+<div class="payment">
+
+<h4>Bank Transfer</h4>
+
+<p><strong>Bank:</strong> Opay</p>
+
+<p><strong>Account Name:</strong> Glory Nkereuwem Ebong</p>
+
+<p><strong>Account Number:</strong> 1234567890</p>
+
+<p>
+After making payment, enter your payment reference below and click <strong>Place Order</strong>. Your order will be sent directly to our email for confirmation.
+</p>
+
+</div>
+
+</div>
+
+<div class="section">
+
+<h3>Payment Reference</h3>
+
+<input type="text" name="Payment Reference" placeholder="Enter your payment reference or transaction ID" required>
+
+</div>
+
+<button type="submit">
+
+Place Order
+
+</button>
+
+<br><br>
+
+<a class="whatsapp"
+href="https://wa.me/2348101532288"
+target="_blank">
+
+Chat on WhatsApp
+
+</a>
+
+</form>
+
+</div>
+
+<footer>
+
+<p>
+
+© 2026 Glory Retail Shop
+
+</p>
+
+</footer>
+
+</body>
+</html>

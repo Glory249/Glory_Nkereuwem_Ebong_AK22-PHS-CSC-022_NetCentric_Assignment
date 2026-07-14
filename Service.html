@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Service | Student Portfolio</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#f4f4f4;
+}
+
+/* Header */
+
+header{
+    background:#003366;
+    color:white;
+    padding:20px;
+    text-align:center;
+}
+
+header h1{
+    margin-bottom:20px;
+}
+
+/* Navigation */
+
+nav ul{
+    list-style:none;
+    display:flex;
+    justify-content:center;
+    gap:30px;
+    flex-wrap:wrap;
+}
+
+nav ul li a{
+    color:white;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+nav ul li a:hover{
+    color:gold;
+}
+
+/* Service Section */
+
+.service{
+    width:85%;
+    margin:40px auto;
+}
+
+.service h2{
+    text-align:center;
+    color:#003366;
+    margin-bottom:15px;
+}
+
+.service p{
+    text-align:center;
+    margin-bottom:40px;
+    line-height:1.8;
+}
+
+/* Service Cards */
+
+.container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+}
+
+.card{
+    background:white;
+    padding:25px;
+    border-radius:10px;
+    text-align:center;
+    box-shadow:0 0 10px rgba(0,0,0,.1);
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+}
+
+.card h3{
+    color:#003366;
+    margin-bottom:15px;
+}
+
+.card p{
+    margin-bottom:20px;
+    line-height:1.6;
+}
+
+.card a{
+    text-decoration:none;
+    background:#003366;
+    color:white;
+    padding:10px 20px;
+    border-radius:5px;
+    display:inline-block;
+}
+
+.card a:hover{
+    background:#0055aa;
+}
+
+/* Footer */
+
+footer{
+    background:#003366;
+    color:white;
+    text-align:center;
+    padding:20px;
+    margin-top:50px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<h1>Student Portfolio</h1>
+
+<nav>
+
+<ul>
+
+<li><a href="Home.html">Home</a></li>
+<li><a href="About.html">About</a></li>
+<li><a href="Portfolio.html">Portfolio</a></li>
+<li><a href="Service.html">Service</a></li>
+<li><a href="Contact.html">Contact</a></li>
+
+</ul>
+
+</nav>
+
+</header>
+
+<section class="service">
+
+<h2>My Services</h2>
+
+<p>
+I offer a variety of technology-related services that demonstrate my skills as a Computer Science student. These services showcase my knowledge in web development, programming, and technical support.
+</p>
+
+<div class="container">
+
+<div class="card">
+<h3>Web Design</h3>
+<p>
+Designing responsive and user-friendly websites using HTML and CSS.
+</p>
+</div>
+
+<div class="card">
+<h3>Programming</h3>
+<p>
+Writing simple programs and solving basic programming problems using different programming languages.
+</p>
+</div>
+
+<div class="card">
+<h3>Technical Support</h3>
+<p>
+Providing assistance with computer software installation, troubleshooting, and maintenance.
+</p>
+</div>
+
+<div class="card">
+<h3>Website Maintenance</h3>
+<p>
+Updating website content, fixing errors, and improving website performance.
+</p>
+</div>
+
+</div>
+
+</section>
+
+<footer>
+
+<p>
+&copy; 2026 Glory Nkereuwem Ebong | AK22/PHS/CSC/022
+</p>
+
+</footer>
+
+</body>
+</html>
