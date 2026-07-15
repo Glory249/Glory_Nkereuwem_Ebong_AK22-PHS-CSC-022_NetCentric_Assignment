@@ -418,3 +418,79 @@ margin-bottom:10px;
     border-radius:6px;
     font-size:14px;
 }
+
+
+/* Navigation */
+
+.navbar{
+    background:#00264d;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 30px;
+}
+
+.logo{
+    color:white;
+    font-size:20px;
+    font-weight:bold;
+}
+
+.navbar ul{
+    display:flex;
+    list-style:none;
+    gap:25px;
+}
+
+.navbar ul li a{
+    color:white;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.navbar ul li a:hover{
+    color:gold;
+}
+
+/* Hamburger Button */
+
+.menu-btn{
+    display:none;
+    background:none;
+    border:none;
+    color:white;
+    font-size:30px;
+    cursor:pointer;
+}
+
+/* Mobile View */
+
+@media(max-width:768px){
+
+    .menu-btn{
+        display:block;
+    }
+
+    .navbar{
+        flex-wrap:wrap;
+    }
+
+    .navbar ul{
+        display:none;
+        width:100%;
+        flex-direction:column;
+        background:#00264d;
+        margin-top:15px;
+    }
+
+    .navbar ul.show{
+        display:flex;
+    }
+
+    .navbar ul li{
+        text-align:center;
+        padding:15px;
+        border-top:1px solid rgba(255,255,255,.2);
+    }
+
+}

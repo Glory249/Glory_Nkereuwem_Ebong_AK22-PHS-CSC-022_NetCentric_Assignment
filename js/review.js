@@ -239,3 +239,14 @@ function saveReviews() {
     displayReviews();
 
 }
+
+// ===============================
+// Mobile Navigation Menu
+// ===============================
+function toggleNavMenu() {
+
+    document
+        .getElementById("navMenu")
+        .classList.toggle("show");
+
+}
