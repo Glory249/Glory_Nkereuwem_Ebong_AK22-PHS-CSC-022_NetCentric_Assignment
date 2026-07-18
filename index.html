@@ -191,49 +191,56 @@ footer{
     padding:20px;
 }
 
+.header-top{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:20px;
+    margin-bottom:15px;
+}
+
+.logo-img{
+    width:80px;
+    height:80px;
+    object-fit:contain;
+    border-radius:50%;
+    background:#fff;
+    padding:5px;
+}
+
+header h1{
+    margin:0;
+    font-size:38px;
+    color:#fff;
+}
 </style>
 
 </head>
 
 <body>
+    
 
-<header>
+    <header>
 
-<h1>Student Portfolio</h1>
+    <div class="header-top">
 
-<p><strong>Name:</strong> Glory Nkereuwem Ebong</p>
+        <img src="Logo1.png" alt="Portfolio Logo" class="logo-img">
 
-<p><strong>Registration Number:</strong> AK22/PHS/CSC/022</p>
+        <h1>Student Portfolio</h1>
 
-<p><strong>Course Code:</strong> CSC 412</p>
+    </div>
 
-<p><strong>Course Title:</strong> NET-CENTRIC COMPUTING</p>
+    <div class="header-info">
+        <span><strong>Name:</strong> Glory Nkereuwem Ebong</span>
+        <span>|</span>
+        <span><strong>Reg No:</strong> AK22/PHS/CSC/022</span>
+        <span>|</span>
+        <span><strong>Course:</strong> CSC 412</span>
+        <span>|</span>
+        <span><strong>NET-CENTRIC COMPUTING</strong></span>
+    </div>
 
 </header>
-
-<nav class="navbar">
-
-    <div class="logo">MENU</div>
-
-    <button class="menu-btn" onclick="toggleMenu()">
-        ☰
-    </button>
-
-    <ul id="navMenu">
-
-        <li><a href="index.html">Home</a></li>
-
-        <li><a href="About.html">About</a></li>
-
-        <li><a href="Portfolio.html">Portfolio</a></li>
-
-        <li><a href="Service.html">Service</a></li>
-
-        <li><a href="Contact.html">Contact</a></li>
-
-    </ul>
-
-</nav>
 
 <section class="home">
 
@@ -323,12 +330,21 @@ Use the sections below to explore my portfolio.
 <div id="reviewsContainer"></div>
 
 </section>
-
 <footer>
 
 <p>&copy; 2026 Glory Nkereuwem Ebong | AK22/PHS/CSC/022</p>
 
 </footer>
+
+<script>
+function toggleMenu(){
+
+    document.getElementById("navMenu").classList.toggle("show");
+
+}
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script src="js/review.js"></script>
 

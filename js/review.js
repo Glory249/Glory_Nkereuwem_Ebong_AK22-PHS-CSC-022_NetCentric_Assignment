@@ -1,17 +1,25 @@
+// ===============================
+// SUPABASE CONFIG
+// ===============================
+
+const SUPABASE_URL = "https://zvnqbpaoivytqqptnyoh.supabase.co/rest/v1/";
+const SUPABASE_KEY = "sb_publishable_qyKx7MHXL4R-aJTtj2dpoA_1PpbEpr0";
+
+// ===============================
+
 const form = document.getElementById("reviewForm");
 const reviewsContainer = document.getElementById("reviewsContainer");
 
-// Load reviews from Local Storage
-let reviews = JSON.parse(localStorage.getItem("reviews")) || [];
 
-// Show reviews immediately
-displayReviews();
+// Load reviews immediately
+loadReviews();
 
 
 // ===============================
 // Submit Review
 // ===============================
-form.addEventListener("submit", function (e) {
+
+form.addEventListener("submit", async function (e) {
 
     e.preventDefault();
 
@@ -19,70 +27,112 @@ form.addEventListener("submit", function (e) {
 
         name: document.getElementById("name").value,
 
-        department: document.getElementById("department").value || "N/A",
+        department:
+            document.getElementById("department").value || "N/A",
 
         rating: document.getElementById("rating").value,
 
         message: document.getElementById("review").value,
 
-        date: new Date().toLocaleString(),
-
-        replies: []
+        date: new Date().toLocaleString()
 
     };
 
-    // Add newest review first
-    reviews.unshift(review);
+    const response = await fetch(
 
-    saveReviews();
+        `${SUPABASE_URL}/rest/v1/reviews`,
 
-    form.reset();
+        {
 
-    alert("Review submitted successfully!");
+            method: "POST",
+
+            headers: {
+
+                apikey: SUPABASE_KEY,
+
+                Authorization: `Bearer ${SUPABASE_KEY}`,
+
+                "Content-Type": "application/json",
+
+                Prefer: "return=representation"
+
+            },
+
+            body: JSON.stringify(review)
+
+        }
+
+    );
+
+    if (response.ok) {
+
+        form.reset();
+
+        alert("Review submitted successfully!");
+
+        loadReviews();
+
+    } else {
+
+        alert("Unable to submit review.");
+
+    }
 
 });
 
 
+
 // ===============================
-// Display Reviews
+// LOAD REVIEWS
 // ===============================
-function displayReviews() {
+
+async function loadReviews() {
+
+    const response = await fetch(
+
+        `${SUPABASE_URL}/rest/v1/reviews?select=*&order=id.desc`,
+
+        {
+
+            headers: {
+
+                apikey: SUPABASE_KEY,
+
+                Authorization: `Bearer ${SUPABASE_KEY}`
+
+            }
+
+        }
+
+    );
+
+    const reviews = await response.json();
+
+    displayReviews(reviews);
+
+}
+
+
+
+// ===============================
+// DISPLAY REVIEWS
+// ===============================
+
+function displayReviews(reviews) {
 
     reviewsContainer.innerHTML = "";
 
     if (reviews.length === 0) {
 
-        reviewsContainer.innerHTML = `
-            <p style="text-align:center;">
-                No reviews yet.
-            </p>
-        `;
+        reviewsContainer.innerHTML =
+
+            "<p style='text-align:center;'>No reviews yet.</p>";
 
         return;
 
     }
 
-    reviews.forEach(function (item, index) {
-
-        let replyHTML = "";
-
-        if (item.replies && item.replies.length > 0) {
-
-            item.replies.forEach(function (reply) {
-
-                replyHTML += `
-                <div class="reply-box">
-
-                    <strong>Reply:</strong><br>
-
-                    ${reply}
-
-                </div>
-                `;
-
-            });
-
-        }
+    reviews.forEach(function (item) {
 
         reviewsContainer.innerHTML += `
 
@@ -95,26 +145,28 @@ function displayReviews() {
                 <div class="menu">
 
                     <button
-                        class="menu-btn"
-                        onclick="toggleMenu(${index})">
+                    class="menu-btn"
+                    onclick="toggleMenu(${item.id})">
 
-                        &#8942;
+                    &#8942;
 
                     </button>
 
                     <div
-                        class="menu-content"
-                        id="menu-${index}">
+                    class="menu-content"
+                    id="menu-${item.id}">
 
-                        <button onclick="replyReview(${index})">
+                        <button
+                        onclick="replyReview(${item.id})">
 
-                            Reply
+                        Reply
 
                         </button>
 
-                        <button onclick="deleteReview(${index})">
+                        <button
+                        onclick="deleteReview(${item.id})">
 
-                            Delete
+                        Delete
 
                         </button>
 
@@ -132,8 +184,6 @@ function displayReviews() {
 
             <span>${item.date}</span>
 
-            ${replyHTML}
-
         </div>
 
         `;
@@ -143,52 +193,96 @@ function displayReviews() {
 }
 
 
+
 // ===============================
-// Reply Review
+// DELETE REVIEW
 // ===============================
-function replyReview(index) {
 
-    const reply = prompt("Enter your reply:");
+async function deleteReview(id) {
 
-    if (reply === null || reply.trim() === "") {
+    if (!confirm("Delete this review?")) return;
 
-        return;
+    await fetch(
 
-    }
+        `${SUPABASE_URL}/rest/v1/reviews?id=eq.${id}`,
 
-    reviews[index].replies.push(reply);
+        {
 
-    saveReviews();
+            method: "DELETE",
+
+            headers: {
+
+                apikey: SUPABASE_KEY,
+
+                Authorization: `Bearer ${SUPABASE_KEY}`
+
+            }
+
+        }
+
+    );
+
+    loadReviews();
 
 }
 
 
+
 // ===============================
-// Delete Review
+// REPLY REVIEW
 // ===============================
-function deleteReview(index) {
 
-    const answer = confirm("Delete this review?");
+async function replyReview(id) {
 
-    if (!answer) return;
+    const reply = prompt("Enter your reply");
 
-    reviews.splice(index, 1);
+    if (!reply) return;
 
-    saveReviews();
+    await fetch(
+
+        `${SUPABASE_URL}/rest/v1/replies`,
+
+        {
+
+            method: "POST",
+
+            headers: {
+
+                apikey: SUPABASE_KEY,
+
+                Authorization: `Bearer ${SUPABASE_KEY}`,
+
+                "Content-Type": "application/json"
+
+            },
+
+            body: JSON.stringify({
+
+                review_id: id,
+
+                reply: reply
+
+            })
+
+        }
+
+    );
+
+    alert("Reply added.");
 
 }
 
 
+
 // ===============================
-// Toggle Menu
+// MENU
 // ===============================
-function toggleMenu(index) {
 
-    const allMenus = document.querySelectorAll(".menu-content");
+function toggleMenu(id) {
 
-    allMenus.forEach(function (menu) {
+    document.querySelectorAll(".menu-content").forEach(function (menu) {
 
-        if (menu.id !== "menu-" + index) {
+        if (menu.id !== "menu-" + id) {
 
             menu.style.display = "none";
 
@@ -196,24 +290,28 @@ function toggleMenu(index) {
 
     });
 
-    const currentMenu = document.getElementById("menu-" + index);
+    const menu = document.getElementById("menu-" + id);
 
-    if (currentMenu.style.display === "block") {
+    if (menu.style.display === "block") {
 
-        currentMenu.style.display = "none";
+        menu.style.display = "none";
 
-    } else {
+    }
 
-        currentMenu.style.display = "block";
+    else {
+
+        menu.style.display = "block";
 
     }
 
 }
 
 
+
 // ===============================
-// Close Menu When Clicking Outside
+// CLOSE MENU
 // ===============================
+
 document.addEventListener("click", function (e) {
 
     if (!e.target.closest(".menu")) {
@@ -229,20 +327,11 @@ document.addEventListener("click", function (e) {
 });
 
 
-// ===============================
-// Save Reviews
-// ===============================
-function saveReviews() {
-
-    localStorage.setItem("reviews", JSON.stringify(reviews));
-
-    displayReviews();
-
-}
 
 // ===============================
-// Mobile Navigation Menu
+// MOBILE MENU
 // ===============================
+
 function toggleNavMenu() {
 
     document
