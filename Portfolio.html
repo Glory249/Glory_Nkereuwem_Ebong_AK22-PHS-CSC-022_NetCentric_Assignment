@@ -23,11 +23,16 @@ body{
 header{
     background:#003366;
     color:white;
-    text-align:center;
     padding:20px;
 }
 
-header h1{
+.header-container{
+    max-width:1200px;
+    margin:auto;
+}
+
+.header-container h1{
+    text-align:center;
     margin-bottom:15px;
 }
 
@@ -35,8 +40,8 @@ nav ul{
     list-style:none;
     display:flex;
     justify-content:center;
-    flex-wrap:wrap;
     gap:30px;
+    flex-wrap:wrap;
 }
 
 nav ul li a{
@@ -47,6 +52,13 @@ nav ul li a{
 
 nav ul li a:hover{
     color:gold;
+}
+
+.menu-icon{
+    display:none;
+    font-size:35px;
+    cursor:pointer;
+    text-align:right;
 }
 
 /* Hero */
@@ -157,6 +169,37 @@ footer{
     margin-top:50px;
 }
 
+/* Mobile */
+
+@media(max-width:768px){
+
+    .menu-icon{
+        display:block;
+        color:white;
+        margin-bottom:15px;
+    }
+
+    nav{
+        display:none;
+    }
+
+    nav.show{
+        display:block;
+    }
+
+    nav ul{
+        flex-direction:column;
+        gap:0;
+    }
+
+    nav ul li a{
+        display:block;
+        padding:15px;
+        border-top:1px solid rgba(255,255,255,.2);
+    }
+
+}
+
 </style>
 
 </head>
@@ -165,27 +208,36 @@ footer{
 
 <header>
 
-<h1>Glory Retail Shop</h1>
+<div class="header-container">
 
-<nav>
+    <h1>Glory Retail Shop</h1>
 
-<ul>
+    <div class="menu-icon" onclick="toggleMenu()">
+        ☰
+    </div>
 
-<li><a href="index.html">Home</a></li>
+    <nav id="navMenu">
 
-<li><a href="About.html">About</a></li>
+        <ul>
 
-<li><a href="Portfolio.html">Shop</a></li>
+            <li><a href="index.html">Home</a></li>
 
-<li><a href="Service.html">Services</a></li>
+            <li><a href="About.html">About</a></li>
 
-<li><a href="Contact.html">Contact</a></li>
+            <li><a href="Portfolio.html">Shop</a></li>
 
-</ul>
+            <li><a href="Service.html">Services</a></li>
 
-</nav>
+            <li><a href="Contact.html">Contact</a></li>
+
+        </ul>
+
+    </nav>
+
+</div>
 
 </header>
+
 
 <section class="hero">
 
@@ -308,6 +360,12 @@ Supabase for administrative monitoring.
     </a>
 
 </footer>
+
+<script>
+function toggleMenu(){
+    document.getElementById("navMenu").classList.toggle("show");
+}
+</script>
 
 </body>
 </html>

@@ -21,34 +21,45 @@ background:#f4f6f9;
 /* Header */
 
 header{
-background:#003366;
-color:white;
-padding:20px;
-text-align:center;
+    background:#003366;
+    color:white;
+    padding:20px;
 }
 
-header h1{
-font-size:35px;
-margin-bottom:15px;
+.header-container{
+    max-width:1200px;
+    margin:auto;
+}
+
+.header-container h1{
+    text-align:center;
+    font-size:35px;
+    margin-bottom:15px;
 }
 
 nav ul{
-list-style:none;
-display:flex;
-justify-content:center;
-gap:25px;
-flex-wrap:wrap;
+    list-style:none;
+    display:flex;
+    justify-content:center;
+    gap:25px;
 }
 
 nav ul li a{
-color:white;
-text-decoration:none;
-font-weight:bold;
-transition:.3s;
+    color:white;
+    text-decoration:none;
+    font-weight:bold;
 }
 
 nav ul li a:hover{
-color:gold;
+    color:gold;
+}
+
+.menu-icon{
+    display:none;
+    font-size:32px;
+    cursor:pointer;
+    text-align:right;
+    color:white;
 }
 
 /* About */
@@ -166,6 +177,49 @@ grid-template-columns:1fr;
 
 }
 
+
+/* Mobile */
+
+@media(max-width:768px){
+
+.about{
+    grid-template-columns:1fr;
+}
+
+/* Show hamburger */
+
+.menu-icon{
+    display:block;
+    margin-bottom:15px;
+}
+
+/* Hide menu initially */
+
+nav{
+    display:none;
+}
+
+nav.show{
+    display:block;
+}
+
+nav ul{
+    flex-direction:column;
+    gap:0;
+}
+
+nav ul li{
+    text-align:center;
+}
+
+nav ul li a{
+    display:block;
+    padding:15px;
+    border-top:1px solid rgba(255,255,255,.2);
+}
+
+}
+
 </style>
 
 </head>
@@ -174,25 +228,33 @@ grid-template-columns:1fr;
 
 <header>
 
-<h1>About Me</h1>
+<div class="header-container">
 
-<nav>
+    <h1>About Me</h1>
 
-<ul>
+    <div class="menu-icon" onclick="toggleMenu()">
+        ☰
+    </div>
 
-<li><a href="index.html">Home</a></li>
+    <nav id="navMenu">
 
-<li><a href="About.html">About</a></li>
+        <ul>
 
-<li><a href="Portfolio.html">Portfolio</a></li>
+            <li><a href="index.html">Home</a></li>
 
-<li><a href="Service.html">Service</a></li>
+            <li><a href="About.html">About</a></li>
 
-<li><a href="Contact.html">Contact</a></li>
+            <li><a href="Portfolio.html">Portfolio</a></li>
 
-</ul>
+            <li><a href="Service.html">Service</a></li>
 
-</nav>
+            <li><a href="Contact.html">Contact</a></li>
+
+        </ul>
+
+    </nav>
+
+</div>
 
 </header>
 
@@ -338,6 +400,12 @@ My career goal is to become a professional Software Engineer with specialization
     </a>
 
 </footer>
+
+<script>
+function toggleMenu() {
+    document.getElementById("navMenu").classList.toggle("show");
+}
+</script>
 
 </body>
 </html>

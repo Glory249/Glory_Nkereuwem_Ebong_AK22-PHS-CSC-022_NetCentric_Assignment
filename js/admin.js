@@ -1,42 +1,45 @@
-const orderTable = document.getElementById("orderTable");
-const orderCount = document.getElementById("orderCount");
-
-loadOrders();
-
-
 const SUPABASE_URL = "https://ffhiixfzovfqsxhtydxk.supabase.co";
 const SUPABASE_KEY = "sb_publishable_n5m_FoyO7NbijxFmhYwAqA_0Tpd17Pd";
 
+// ===============================
+// ELEMENTS
 // ===============================
 
 const reviewTable = document.getElementById("reviewTable");
 const contactTable = document.getElementById("contactTable");
 const conversionTable = document.getElementById("conversionTable");
+const orderTable = document.getElementById("orderTable");
 
 const reviewCount = document.getElementById("reviewCount");
 const contactCount = document.getElementById("contactCount");
 const conversionCount = document.getElementById("conversionCount");
+const orderCount = document.getElementById("orderCount");
 
 const search = document.getElementById("search");
 
 let contacts = [];
 
+// ===============================
+// INITIAL LOAD
+// ===============================
+
 loadReviews();
 loadContacts();
 loadConversions();
+loadOrders();
 
 // ===============================
 // LOAD REVIEWS
 // ===============================
 
-async function loadReviews(){
+async function loadReviews() {
 
     const response = await fetch(
         `${SUPABASE_URL}/rest/v1/reviews?select=*`,
         {
-            headers:{
-                apikey:SUPABASE_KEY,
-                Authorization:`Bearer ${SUPABASE_KEY}`
+            headers: {
+                apikey: SUPABASE_KEY,
+                Authorization: `Bearer ${SUPABASE_KEY}`
             }
         }
     );
@@ -45,24 +48,17 @@ async function loadReviews(){
 
     reviewCount.textContent = reviews.length;
 
-    reviewTable.innerHTML="";
+    reviewTable.innerHTML = "";
 
-    reviews.forEach(item=>{
+    reviews.forEach(item => {
 
-        reviewTable.innerHTML+=`
-
-        <tr>
-
-        <td>${item.name}</td>
-
-        <td>${item.department}</td>
-
-        <td>${item.rating}</td>
-
-        <td>${item.message}</td>
-
-        </tr>
-
+        reviewTable.innerHTML += `
+            <tr>
+                <td>${item.name}</td>
+                <td>${item.department}</td>
+                <td>${item.rating}</td>
+                <td>${item.message}</td>
+            </tr>
         `;
 
     });
@@ -73,24 +69,16 @@ async function loadReviews(){
 // LOAD CONTACTS
 // ===============================
 
-async function loadContacts(){
+async function loadContacts() {
 
     const response = await fetch(
-
         `${SUPABASE_URL}/rest/v1/contacts?select=*`,
-
         {
-
-            headers:{
-
-                apikey:SUPABASE_KEY,
-
-                Authorization:`Bearer ${SUPABASE_KEY}`
-
+            headers: {
+                apikey: SUPABASE_KEY,
+                Authorization: `Bearer ${SUPABASE_KEY}`
             }
-
         }
-
     );
 
     contacts = await response.json();
@@ -105,26 +93,19 @@ async function loadContacts(){
 // DISPLAY CONTACTS
 // ===============================
 
-function displayContacts(data){
+function displayContacts(data) {
 
-    contactTable.innerHTML="";
+    contactTable.innerHTML = "";
 
-    data.forEach(item=>{
+    data.forEach(item => {
 
-        contactTable.innerHTML+=`
-
-        <tr>
-
-        <td>${item.fullname}</td>
-
-        <td>${item.email}</td>
-
-        <td>${item.subject}</td>
-
-        <td>${item.message}</td>
-
-        </tr>
-
+        contactTable.innerHTML += `
+            <tr>
+                <td>${item.fullname}</td>
+                <td>${item.email}</td>
+                <td>${item.subject}</td>
+                <td>${item.message}</td>
+            </tr>
         `;
 
     });
@@ -132,14 +113,14 @@ function displayContacts(data){
 }
 
 // ===============================
-// SEARCH
+// SEARCH CONTACTS
 // ===============================
 
-search.addEventListener("keyup",function(){
+search.addEventListener("keyup", function () {
 
-    const value=this.value.toLowerCase();
+    const value = this.value.toLowerCase();
 
-    const filtered=contacts.filter(item=>
+    const filtered = contacts.filter(item =>
 
         item.fullname.toLowerCase().includes(value) ||
 
@@ -155,80 +136,59 @@ search.addEventListener("keyup",function(){
 // LOAD CONVERSIONS
 // ===============================
 
-async function loadConversions(){
+async function loadConversions() {
 
     const response = await fetch(
-
         `${SUPABASE_URL}/rest/v1/conversions?select=*`,
-
         {
-
-            headers:{
-
-                apikey:SUPABASE_KEY,
-
-                Authorization:`Bearer ${SUPABASE_KEY}`
-
+            headers: {
+                apikey: SUPABASE_KEY,
+                Authorization: `Bearer ${SUPABASE_KEY}`
             }
-
         }
-
     );
 
     const conversions = await response.json();
 
     conversionCount.textContent = conversions.length;
 
-    conversionTable.innerHTML="";
+    conversionTable.innerHTML = "";
 
-    conversions.forEach(item=>{
+    conversions.forEach(item => {
 
-        conversionTable.innerHTML+=`
-
-        <tr>
-
-        <td>${item.conversion_type}</td>
-
-        <td>${item.input_value}</td>
-
-        <td>${item.result}</td>
-
-        </tr>
-
+        conversionTable.innerHTML += `
+            <tr>
+                <td>${item.conversion_type}</td>
+                <td>${item.input_value}</td>
+                <td>${item.result}</td>
+            </tr>
         `;
 
     });
 
+}
 
+// ===============================
+// LOAD ORDERS
+// ===============================
 
 async function loadOrders() {
 
     try {
 
         const response = await fetch(
-
             `${SUPABASE_URL}/rest/v1/orders?select=*&order=id.desc`,
-
             {
-
                 headers: {
-
                     apikey: SUPABASE_KEY,
-
                     Authorization: `Bearer ${SUPABASE_KEY}`
-
                 }
-
             }
-
         );
 
         if (!response.ok) {
-
             console.log(await response.text());
-
             return;
-
         }
 
         const orders = await response.json();
@@ -240,37 +200,22 @@ async function loadOrders() {
         orders.forEach(order => {
 
             orderTable.innerHTML += `
-
-            <tr>
-
-                <td>${order.fullname}</td>
-
-                <td>${order.product}</td>
-
-                <td>${order.quantity}</td>
-
-                <td>${order.amount}</td>
-
-                <td>${order.phone}</td>
-
-                <td>${order.payment_reference}</td>
-
-            </tr>
-
+                <tr>
+                    <td>${order.fullname}</td>
+                    <td>${order.product}</td>
+                    <td>${order.quantity}</td>
+                    <td>${order.amount}</td>
+                    <td>${order.phone}</td>
+                    <td>${order.payment_reference}</td>
+                </tr>
             `;
 
         });
 
-    }
+    } catch (error) {
 
-    catch (error) {
-
-        console.log(error);
+        console.error(error);
 
     }
-
-}
-
-
 
 }

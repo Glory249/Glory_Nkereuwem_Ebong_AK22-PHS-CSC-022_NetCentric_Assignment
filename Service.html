@@ -24,14 +24,26 @@ header{
     background:#003366;
     color:white;
     padding:20px;
+}
+
+
+.header-container{
+    max-width:1200px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+}
+
+.header-container h1{
+    margin:0;
+}
+
+.header-container h1{
     text-align:center;
+    margin-bottom:15px;
 }
-
-header h1{
-    margin-bottom:20px;
-}
-
-/* Navigation */
 
 nav ul{
     list-style:none;
@@ -49,6 +61,13 @@ nav ul li a{
 
 nav ul li a:hover{
     color:gold;
+}
+
+.menu-icon{
+    display:none;
+    font-size:35px;
+    cursor:pointer;
+    text-align:right;
 }
 
 /* Service Section */
@@ -124,6 +143,42 @@ footer{
     margin-top:50px;
 }
 
+
+/* Responsive Navigation */
+
+@media screen and (max-width:768px){
+
+    .menu-icon{
+        display:block;
+        color:white;
+    }
+
+    nav{
+        display:none;
+        width:100%;
+    }
+
+    nav.show{
+        display:block;
+    }
+
+    nav ul{
+        flex-direction:column;
+        gap:0;
+        margin-top:15px;
+    }
+
+    nav ul li{
+        border-top:1px solid rgba(255,255,255,.3);
+    }
+
+    nav ul li a{
+        display:block;
+        padding:15px;
+    }
+
+}
+
 </style>
 
 </head>
@@ -132,21 +187,29 @@ footer{
 
 <header>
 
-<h1>Student Portfolio</h1>
+<div class="header-container">
 
-<nav>
+    <h1>Student Portfolio</h1>
 
-<ul>
+<div class="menu-icon" onclick="toggleMenu()">
+    ☰
+</div>
 
-<li><a href="index.html">Home</a></li>
-<li><a href="About.html">About</a></li>
-<li><a href="Portfolio.html">Portfolio</a></li>
-<li><a href="Service.html">Service</a></li>
-<li><a href="Contact.html">Contact</a></li>
+<nav id="navMenu">
 
-</ul>
+        <ul>
 
-</nav>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="About.html">About</a></li>
+            <li><a href="Portfolio.html">Portfolio</a></li>
+            <li><a href="Service.html">Service</a></li>
+            <li><a href="Contact.html">Contact</a></li>
+
+        </ul>
+
+    </nav>
+
+</div>
 
 </header>
 
@@ -204,6 +267,12 @@ Updating website content, fixing errors, and improving website performance.
     </a>
 
 </footer>
+
+<script>
+function toggleMenu(){
+    document.getElementById("navMenu").classList.toggle("show");
+}
+</script>
 
 </body>
 </html>
