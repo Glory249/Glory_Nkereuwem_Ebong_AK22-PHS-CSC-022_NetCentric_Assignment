@@ -404,36 +404,23 @@ linkedin.com/in/gloryebong
 
 
 
-<form action="https://formspree.io/f/mojgveyd" method="POST">
+<form id="contactForm">
 
 
 <label>Full Name</label>
 
-<input 
-type="text"
-name="Full Name"
-placeholder="Enter Your Full Name"
-required>
-
+<input type="text" id="fullname" placeholder="Enter Your Full Name" required>
 
 
 <label>Email Address</label>
 
-<input
-type="email"
-name="Email"
-placeholder="Enter Your Email"
-required>
+<input type="email" id="email" placeholder="Enter Your Email" required>
 
 
 
 <label>Subject</label>
 
-<input
-type="text"
-name="Subject"
-placeholder="Subject"
-required>
+<input type="text" id="subject" placeholder="Subject" required>
 
 
 
@@ -441,25 +428,7 @@ required>
 <label>Your Message</label>
 
 
-<textarea
-name="Message"
-rows="6"
-placeholder="Write Your Message Here..."
-required>
-</textarea>
-
-
-
-<input
-type="hidden"
-name="_subject"
-value="New Contact Message From Student Portfolio">
-
-
-<input
-type="hidden"
-name="_captcha"
-value="false">
+<textarea id="message" rows="6" placeholder="Write Your Message Here..." required></textarea>
 
 
 
@@ -490,10 +459,14 @@ Send Message
 &copy; 2026 Glory Nkereuwem Ebong | Student Portfolio
 
 </p>
+<p style="margin-top:10px;">
+    <a href="admin.html" style="color:white;text-decoration:none;">
+        Admin Dashboard
+    </a>
 
 </footer>
 
-
+<script src="js/contact.js"></script>
 
 </body>
 </html>

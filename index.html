@@ -181,8 +181,6 @@ header p{
     font-size:14px;
 }
 
-/* Footer */
-
 footer{
     margin-top:50px;
     background:#003366;
@@ -193,35 +191,92 @@ footer{
 
 .header-top{
     display:flex;
-    justify-content:center;
-    align-items:center;
-    gap:20px;
-    margin-bottom:15px;
+    flex-direction:column;
+    align-items:flex-start;
+    padding-left:30px;
+    margin-bottom:20px;
 }
 
 .logo-img{
-    width:80px;
-    height:80px;
+    width:90px;
+    height:90px;
     object-fit:contain;
+    background:#fff;
+    border-radius:50%;
+    padding:5px;
+    margin-bottom:10px;
+}
+
+
+header{
+    background:#003366;
+    color:white;
+    padding:30px;
+}
+
+.header-grid{
+    display:grid;
+    grid-template-columns:280px 1fr;
+    align-items:center;
+    gap:40px;
+}
+
+.header-top{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+.logo-img{
+    width:100px;
+    height:100px;
     border-radius:50%;
     background:#fff;
     padding:5px;
+    margin-bottom:10px;
 }
 
-header h1{
-    margin:0;
+.header-top h1{
     font-size:38px;
-    color:#fff;
+    color:white;
+    text-align:center;
 }
+
+.right-box{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+}
+
+.info-card{
+    background:#0a4a8a;
+    padding:20px;
+    border-radius:10px;
+    text-align:center;
+}
+
+.info-card h4{
+    margin-bottom:10px;
+    font-size:18px;
+}
+
+.info-card p{
+    font-size:20px;
+    font-weight:bold;
+}
+
+
 </style>
 
 </head>
 
 <body>
-    
 
-    <header>
+<header>
 
+<div class="header-grid">
+
+    <!-- LEFT BOX -->
     <div class="header-top">
 
         <img src="Logo1.png" alt="Portfolio Logo" class="logo-img">
@@ -230,17 +285,35 @@ header h1{
 
     </div>
 
-    <div class="header-info">
-        <span><strong>Name:</strong> Glory Nkereuwem Ebong</span>
-        <span>|</span>
-        <span><strong>Reg No:</strong> AK22/PHS/CSC/022</span>
-        <span>|</span>
-        <span><strong>Course:</strong> CSC 412</span>
-        <span>|</span>
-        <span><strong>NET-CENTRIC COMPUTING</strong></span>
+    <!-- RIGHT BOX -->
+    <div class="right-box">
+
+        <div class="info-card">
+            <h4>Name:</h4>
+            <p>Glory Nkereuwem Ebong</p>
+        </div>
+
+        <div class="info-card">
+            <h4>Reg No:</h4>
+            <p>AK22/PHS/CSC/022</p>
+        </div>
+
+        <div class="info-card">
+            <h4>Course Code:</h4>
+            <p>CSC 412</p>
+        </div>
+
+        <div class="info-card">
+            <h4>Course Title:</h4>
+            <p>NET-CENTRIC COMPUTING</p>
+        </div>
+
     </div>
 
+</div>
+
 </header>
+
 
 <section class="home">
 
@@ -248,18 +321,13 @@ header h1{
 
 <p>
 
-Welcome to my official student portfolio website developed as part of the
-CSC 412 (Net-Centric Computing) course.
+Welcome to my official student portfolio website developed as part of the CSC 412 (Net-Centric Computing) course.
 
-This website showcases my academic projects, retail shop portfolio,
-professional services, contact information, and other activities completed
-during my study at Akwa Ibom State University.
+This website showcases my academic projects, retail shop portfolio, professional services, contact information, and other activities completed during my study at Akwa Ibom State University.
 
 Use the sections below to explore my portfolio.
 
 </p>
-
-
 
 </section>
 
@@ -306,15 +374,10 @@ Use the sections below to explore my portfolio.
 <select id="rating" required>
 
 <option value="">Select Rating</option>
-
 <option>⭐⭐⭐⭐⭐ Excellent</option>
-
 <option>⭐⭐⭐⭐ Very Good</option>
-
 <option>⭐⭐⭐ Good</option>
-
 <option>⭐⭐ Fair</option>
-
 <option>⭐ Poor</option>
 
 </select>
@@ -330,23 +393,26 @@ Use the sections below to explore my portfolio.
 <div id="reviewsContainer"></div>
 
 </section>
+
 <footer>
 
 <p>&copy; 2026 Glory Nkereuwem Ebong | AK22/PHS/CSC/022</p>
+
+<p style="margin-top:10px;">
+    <a href="admin.html" style="color:white;text-decoration:none;">
+        Admin Dashboard
+    </a>
 
 </footer>
 
 <script>
 function toggleMenu(){
-
-    document.getElementById("navMenu").classList.toggle("show");
-
+    document.getElementById("navMenu")?.classList.toggle("show");
 }
 </script>
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script src="js/review.js"></script>
 
 </body>
 </html>
+

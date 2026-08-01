@@ -1,23 +1,19 @@
-// ===============================
-// SUPABASE CONFIG
-// ===============================
+// =========================================
+// SUPABASE CONFIGURATION
+// =========================================
 
-const SUPABASE_URL = "https://zvnqbpaoivytqqptnyoh.supabase.co/rest/v1/";
-const SUPABASE_KEY = "sb_publishable_qyKx7MHXL4R-aJTtj2dpoA_1PpbEpr0";
-
-// ===============================
+const SUPABASE_URL = "https://ffhiixfzovfqsxhtydxk.supabase.co";
+const SUPABASE_KEY = "sb_publishable_n5m_FoyO7NbijxFmhYwAqA_0Tpd17Pd";
 
 const form = document.getElementById("reviewForm");
 const reviewsContainer = document.getElementById("reviewsContainer");
 
+// Load reviews when page opens
+window.onload = loadReviews;
 
-// Load reviews immediately
-loadReviews();
-
-
-// ===============================
-// Submit Review
-// ===============================
+// =========================================
+// SUBMIT REVIEW
+// =========================================
 
 form.addEventListener("submit", async function (e) {
 
@@ -26,97 +22,106 @@ form.addEventListener("submit", async function (e) {
     const review = {
 
         name: document.getElementById("name").value,
-
-        department:
-            document.getElementById("department").value || "N/A",
-
+        department: document.getElementById("department").value || "N/A",
         rating: document.getElementById("rating").value,
-
-        message: document.getElementById("review").value,
-
-        date: new Date().toLocaleString()
+        message: document.getElementById("review").value
 
     };
 
-    const response = await fetch(
+    try {
 
-        `${SUPABASE_URL}/rest/v1/reviews`,
-
-        {
+        const response = await fetch(`${SUPABASE_URL}/rest/v1/reviews`, {
 
             method: "POST",
 
             headers: {
 
-                apikey: SUPABASE_KEY,
-
-                Authorization: `Bearer ${SUPABASE_KEY}`,
-
+                "apikey": SUPABASE_KEY,
+                "Authorization": `Bearer ${SUPABASE_KEY}`,
                 "Content-Type": "application/json",
-
-                Prefer: "return=representation"
+                "Prefer": "return=representation"
 
             },
 
             body: JSON.stringify(review)
 
+        });
+
+        if (!response.ok) {
+
+            console.log(await response.text());
+            alert("Unable to submit review.");
+            return;
+
         }
-
-    );
-
-    if (response.ok) {
-
-        form.reset();
 
         alert("Review submitted successfully!");
 
+        form.reset();
+
         loadReviews();
 
-    } else {
+    }
 
-        alert("Unable to submit review.");
+    catch (error) {
+
+        console.error(error);
+
+        alert("Network Error");
 
     }
 
 });
 
-
-
-// ===============================
+// =========================================
 // LOAD REVIEWS
-// ===============================
+// =========================================
 
 async function loadReviews() {
 
-    const response = await fetch(
+    try {
 
-        `${SUPABASE_URL}/rest/v1/reviews?select=*&order=id.desc`,
+        const response = await fetch(
 
-        {
+            `${SUPABASE_URL}/rest/v1/reviews?select=*&order=created_at.desc`,
 
-            headers: {
+            {
 
-                apikey: SUPABASE_KEY,
+                headers: {
 
-                Authorization: `Bearer ${SUPABASE_KEY}`
+                    "apikey": SUPABASE_KEY,
+                    "Authorization": `Bearer ${SUPABASE_KEY}`
+
+                }
 
             }
 
+        );
+
+        if (!response.ok) {
+
+            console.log(await response.text());
+            return;
+
         }
 
-    );
+        const reviews = await response.json();
 
-    const reviews = await response.json();
+        displayReviews(reviews);
 
-    displayReviews(reviews);
+    }
+
+    catch (error) {
+
+        console.error(error);
+
+    }
 
 }
 
-
-
-// ===============================
+// =========================================
 // DISPLAY REVIEWS
-// ===============================
+// =========================================
 
 function displayReviews(reviews) {
 
@@ -125,7 +130,6 @@ function displayReviews(reviews) {
     if (reviews.length === 0) {
 
         reviewsContainer.innerHTML =
-
             "<p style='text-align:center;'>No reviews yet.</p>";
 
         return;
@@ -138,43 +142,7 @@ function displayReviews(reviews) {
 
         <div class="review-card">
 
-            <div class="review-header">
-
-                <h3>${item.name}</h3>
-
-                <div class="menu">
-
-                    <button
-                    class="menu-btn"
-                    onclick="toggleMenu(${item.id})">
-
-                    &#8942;
-
-                    </button>
-
-                    <div
-                    class="menu-content"
-                    id="menu-${item.id}">
-
-                        <button
-                        onclick="replyReview(${item.id})">
-
-                        Reply
-
-                        </button>
-
-                        <button
-                        onclick="deleteReview(${item.id})">
-
-                        Delete
-
-                        </button>
-
-                    </div>
-
-                </div>
-
-            </div>
+            <h3>${item.name}</h3>
 
             <p><strong>Department:</strong> ${item.department}</p>
 
@@ -182,7 +150,7 @@ function displayReviews(reviews) {
 
             <p>${item.message}</p>
 
-            <span>${item.date}</span>
+            <span>${new Date(item.created_at).toLocaleString()}</span>
 
         </div>
 
@@ -193,149 +161,24 @@ function displayReviews(reviews) {
 }
 
 
-
-// ===============================
-// DELETE REVIEW
-// ===============================
-
 async function deleteReview(id) {
 
     if (!confirm("Delete this review?")) return;
 
-    await fetch(
-
+    const response = await fetch(
         `${SUPABASE_URL}/rest/v1/reviews?id=eq.${id}`,
-
         {
-
             method: "DELETE",
-
             headers: {
-
                 apikey: SUPABASE_KEY,
-
                 Authorization: `Bearer ${SUPABASE_KEY}`
-
             }
-
         }
-
     );
 
-    loadReviews();
-
-}
-
-
-
-// ===============================
-// REPLY REVIEW
-// ===============================
-
-async function replyReview(id) {
-
-    const reply = prompt("Enter your reply");
-
-    if (!reply) return;
-
-    await fetch(
-
-        `${SUPABASE_URL}/rest/v1/replies`,
-
-        {
-
-            method: "POST",
-
-            headers: {
-
-                apikey: SUPABASE_KEY,
-
-                Authorization: `Bearer ${SUPABASE_KEY}`,
-
-                "Content-Type": "application/json"
-
-            },
-
-            body: JSON.stringify({
-
-                review_id: id,
-
-                reply: reply
-
-            })
-
-        }
-
-    );
-
-    alert("Reply added.");
-
-}
-
-
-
-// ===============================
-// MENU
-// ===============================
-
-function toggleMenu(id) {
-
-    document.querySelectorAll(".menu-content").forEach(function (menu) {
-
-        if (menu.id !== "menu-" + id) {
-
-            menu.style.display = "none";
-
-        }
-
-    });
-
-    const menu = document.getElementById("menu-" + id);
-
-    if (menu.style.display === "block") {
-
-        menu.style.display = "none";
-
+    if (response.ok) {
+        loadReviews();
+    } else {
+        alert("Unable to delete review.");
     }
-
-    else {
-
-        menu.style.display = "block";
-
-    }
-
-}
-
-
-
-// ===============================
-// CLOSE MENU
-// ===============================
-
-document.addEventListener("click", function (e) {
-
-    if (!e.target.closest(".menu")) {
-
-        document.querySelectorAll(".menu-content").forEach(function (menu) {
-
-            menu.style.display = "none";
-
-        });
-
-    }
-
-});
-
-
-
-// ===============================
-// MOBILE MENU
-// ===============================
-
-function toggleNavMenu() {
-
-    document
-        .getElementById("navMenu")
-        .classList.toggle("show");
-
 }

@@ -126,11 +126,38 @@ footer{
     padding:20px;
 }
 
+
+.back-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:#ffffff;
+    color:#003366;
+    text-decoration:none;
+    padding:10px 18px;
+    border-radius:6px;
+    border:2px solid #003366;
+    font-weight:bold;
+    margin:20px;
+    transition:0.3s;
+}
+
+.back-btn:hover{
+    background:#003366;
+    color:white;
+}
+
+
 </style>
 
 </head>
 
 <body>
+
+    <a href="Portfolio.html" class="back-btn">
+    ← Back to Portfolio
+</a>
+
 
 <header>
 
@@ -144,7 +171,7 @@ footer{
 
 <h2>Complete Your Order</h2>
 
-<form action="https://formspree.io/f/mojgveyd" method="POST">
+<form id="orderForm">
 
 <input type="hidden" name="_subject" value="New Retail Shop Order">
 
@@ -153,22 +180,48 @@ footer{
 <h3>Customer Information</h3>
 
 <label>Full Name</label>
-<input type="text" name="Full Name" placeholder="Enter your full name" required>
+<input
+type="text"
+id="fullname"
+placeholder="Enter your full name"
+required>
 
 <label>Email Address</label>
-<input type="email" name="Email Address" placeholder="Enter your email" required>
+<input
+type="email"
+id="email"
+placeholder="Enter your email"
+required>
 
 <label>Phone Number</label>
-<input type="tel" name="Phone Number" placeholder="Enter your phone number" required>
+<input
+type="tel"
+id="phone"
+placeholder="Enter your phone number"
+required>
+
 
 <label>Delivery Address</label>
-<textarea rows="4" name="Delivery Address" placeholder="Enter your full delivery address" required></textarea>
+<textarea
+id="address"
+rows="4"
+placeholder="Enter your full delivery address"
+required></textarea>
 
 <label>State</label>
-<input type="text" name="State" placeholder="Enter your state" required>
+<input
+type="text"
+id="state"
+placeholder="Enter your state"
+required>
+
 
 <label>City</label>
-<input type="text" name="City" placeholder="Enter your city" required>
+<input
+type="text"
+id="city"
+placeholder="Enter your city"
+required>
 
 </div>
 
@@ -177,13 +230,35 @@ footer{
 <h3>Order Details</h3>
 
 <label>Product Name</label>
-<input type="text" name="Product Name" placeholder="Example: Samsung Galaxy Phone" required>
+<input
+type="text"
+id="product"
+placeholder="Example: Samsung Galaxy Phone"
+required>
+
 
 <label>Quantity</label>
-<input type="number" name="Quantity" value="1" min="1" required>
+<input
+type="number"
+id="quantity"
+value="1"
+min="1"
+required>
+
 
 <label>Total Amount</label>
-<input type="text" name="Total Amount" placeholder="₦250,000" required>
+<input
+type="text"
+id="amount"
+placeholder="₦250,000"
+required>
+
+<label>Payment Reference</label>
+<input
+type="text"
+id="payment_reference"
+placeholder="Enter your payment reference or transaction ID"
+required>
 
 </div>
 
@@ -245,7 +320,15 @@ Chat on WhatsApp
 
 </p>
 
+<p style="margin-top:10px;">
+    <a href="admin.html" style="color:white;text-decoration:none;">
+        Admin Dashboard
+    </a>
+    
 </footer>
+
+<script src="js/order.js"></script>
 
 </body>
 </html>
+
